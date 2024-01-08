@@ -56,7 +56,7 @@ const Card: React.FC<CardProps> = ({ text, role}) => {
   };
 
   const cardStyle = {
-    backgroundColor: flipsCount >= 2 ? Colors.disabled : Colors.primaryBlue500,
+    backgroundColor: flipsCount >= 2 ? Colors.disabled : Colors.button400,
   };
 
   return (
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   backCard: {
-    backgroundColor: Colors.primaryBlue200,
+    backgroundColor: Colors.button,
     transform: [{ rotateY: "180deg" }],
     justifyContent: "center",
   },
