@@ -4,4 +4,8 @@ export type RootStackParamList = {
     playerNumber: number;
     spyNumber: number;
   };
+  FirstOnb: undefined;
+  SecondOnb: undefined;
+  ThirdOnb: undefined;
+  LangSelect: undefined;
 };

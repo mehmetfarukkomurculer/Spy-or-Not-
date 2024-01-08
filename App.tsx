@@ -1,15 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import StartScreen from "./screens/StartScreen";
+import StartScreen from "./screens/main/StartScreen";
 import { Colors } from "./utils/colors";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import GameScreen from "./screens/GameScreen";
+import GameScreen from "./screens/main/GameScreen";
 import { RootStackParamList } from "./navigation/RootStackParamList";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import FirstOnboardingScreen from "./screens/onboarding/FirstOnboardingScreen";
+import SecondOnboardingScreen from "./screens/onboarding/SecondOnboardingScreen";
+import ThirdOnboardingScreen from "./screens/onboarding/ThirdOnboardingScreen";
+import LanguageSelectScreen from "./screens/onboarding/LanguageSelectScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -43,9 +47,29 @@ export default function App() {
           }}
         >
           <Stack.Screen
+            name="LangSelect"
+            component={LanguageSelectScreen}
+            options={{ headerShown: false, gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="FirstOnb"
+            component={FirstOnboardingScreen}
+            options={{ headerShown: false, gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="SecondOnb"
+            component={SecondOnboardingScreen}
+            options={{ headerShown: false, gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="ThirdOnb"
+            component={ThirdOnboardingScreen}
+            options={{ headerShown: false, gestureEnabled: false }}
+          />
+          <Stack.Screen
             name="Start"
             component={StartScreen}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, gestureEnabled: false  }}
           />
           <Stack.Screen
             name="Game"
@@ -54,13 +78,10 @@ export default function App() {
               gestureEnabled: false,
               headerStyle: {
                 backgroundColor: Colors.secondaryAccent600,
-                
               },
               headerBackVisible: false,
-              title: "SELECT A CARD",
-              headerTitleStyle: {
-                fontFamily: 'Tektur'
-              }
+              headerShown: true,
+              title:""
             }}
           />
         </Stack.Navigator>

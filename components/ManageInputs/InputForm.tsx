@@ -17,7 +17,7 @@ const InputForm = () => {
   const [validation, setValidation] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
-
+  const lang = useAppSelector((state) => state.language.language);
   const playerNumberState = useAppSelector(
     (state) => state.playerNumbers.playerNumber
   );
@@ -96,7 +96,7 @@ const InputForm = () => {
   return (
     <View>
       <Input
-        label="Enter the total number of players"
+        label={lang === 'eng' ? "Enter the total number of players" : "Oyuncu sayısını girin"}
         textInputConfig={{
           keyboardType: "number-pad",
           onChangeText: numOfPlayersHandler,
@@ -106,15 +106,15 @@ const InputForm = () => {
       {!isValidPlayerNumber && (
         <View>
           <Text style={styles.warningText}>
-            Number of players must be greater than 2
+            {lang === 'eng' ? "Number of players must be greater than 2." : "Oyuncu sayısı 2'den büyük olmalı."}
           </Text>
           <Text style={styles.warningText}>
-            Number of players must be greater than or equal to spies number
+            {lang === 'eng' ? "Number of players must be greater than or equal to spies number." : "Oyuncu sayısı, spy sayısından büyük olmalı."}
           </Text>
         </View>
       )}
       <Input
-        label="Enter the total number of spies"
+        label={lang === 'eng' ? "Enter the total number of spies" : "Casus sayısını girin"}
         textInputConfig={{
           keyboardType: "number-pad",
           onChangeText: numOfSpiesHandler,
@@ -124,19 +124,19 @@ const InputForm = () => {
       {!isValidSpyNumber && (
         <View>
           <Text style={styles.warningText}>
-            Number of spies must be greater than 0
+            {lang === 'eng' ? "Number of spies must be greater than 0." : "Casus sayısı 0'dan büyük olmalı."}
           </Text>
           <Text style={styles.warningText}>
-            Number of spies must be lower than or equal to player numbers
+            {lang === 'eng' ? "Number of spies must be lower than or equal to player numbers." : "Casus sayısı, oyuncu sayısından küçük olmalı."}
           </Text>
         </View>
       )}
       <CustomButton
         onPress={startGameHandler}
-        buttonTitle="START"
+        buttonTitle={lang === 'eng' ? "START" : "BAŞLAT"}
         buttonStyles={styles.buttonStyle}
       />
-      {!validation && <Text style={styles.warningText}>Invalid Inputs</Text>}
+      {!validation && <Text style={styles.warningText}>{lang === 'eng' ? "Invalid Inputs!" : "Geçersiz değerler!"}</Text>}
     </View>
   );
 };

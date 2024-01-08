@@ -1,11 +1,13 @@
 import { View, StyleSheet, FlatList } from "react-native";
 import { RouteProp } from "@react-navigation/native";
-import { RootStackParamList as ScreenParamList } from "../navigation/RootStackParamList";
-import Card from "../components/Game/Card";
-import { shuffler } from "../utils/shuffler";
-import IconButton from "../components/UI/IconButton";
+import { RootStackParamList as ScreenParamList } from "../../navigation/RootStackParamList";
+import Card from "../../components/Game/Card";
+import { shuffler } from "../../utils/shuffler";
+import IconButton from "../../components/UI/IconButton";
 import { useNavigation } from "@react-navigation/native";
-import { englishWords } from "../data/english-words";
+import { englishWords } from "../../data/english-words";
+import { turkishWords } from "../../data/turkish-words";
+import { useAppSelector } from "../../redux/hooks";
 
 interface GameScreenProps {
   route: RouteProp<ScreenParamList, "Game">;
@@ -13,11 +15,18 @@ interface GameScreenProps {
 
 const GameScreen: React.FC<GameScreenProps> = ({ route }) => {
   const navigation = useNavigation<any>();
+  const lang = useAppSelector((state) => state.language.language);
   const { playerNumber, spyNumber } = route.params;
 
-  const index = Math.floor(Math.random() * 124);
-
-  const word = englishWords[index];
+  const index = Math.floor(Math.random() * 83);
+  let word;
+  
+  if(lang === 'eng'){
+    word = englishWords[index];
+  }else {
+    word = turkishWords[index];
+  }
+  
 
   const roles: string[] = Array(spyNumber)
     .fill("spy")
@@ -35,6 +44,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ route }) => {
       key={item.key}
       text={(parseInt(item.key) + 1).toString()}
       role={item.role}
+      
     />
   );
 

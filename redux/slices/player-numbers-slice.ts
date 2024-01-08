@@ -19,7 +19,7 @@ const playerNumbersSlice = createSlice({
         },
         setSpyNumber(state, action: PayloadAction<number>){
             state.spyNumber = action.payload;
-        }
+        },
     }
 })
 

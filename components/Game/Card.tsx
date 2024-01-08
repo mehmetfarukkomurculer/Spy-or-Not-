@@ -17,7 +17,8 @@ interface CardProps {
   role: string;
 }
 
-const Card: React.FC<CardProps> = ({ text, role}) => {
+
+const Card: React.FC<CardProps> = ({ text, role }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [flipsCount, setFlipsCount] = useState(0);
   const flipAnimation = useRef(new Animated.Value(0)).current;
@@ -25,6 +26,7 @@ const Card: React.FC<CardProps> = ({ text, role}) => {
   const handleFlip = () => {
     if (flipsCount < 2) {
       setFlipsCount(flipsCount + 1);
+      
       Animated.timing(flipAnimation, {
         toValue: isFlipped ? 0 : 180,
         duration: 500,
@@ -34,7 +36,7 @@ const Card: React.FC<CardProps> = ({ text, role}) => {
       });
     }
   };
-
+  
   const frontInterpolate = flipAnimation.interpolate({
     inputRange: [0, 180],
     outputRange: ["0deg", "180deg"],
@@ -124,6 +126,6 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 24,
     textAlign: "center",
-    fontFamily: 'Tektur',
+    fontFamily: "Tektur",
   },
 });
