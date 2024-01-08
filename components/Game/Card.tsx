@@ -124,5 +124,6 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 24,
     textAlign: "center",
+    fontFamily: 'Tektur',
   },
 });

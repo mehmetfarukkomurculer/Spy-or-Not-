@@ -133,7 +133,7 @@ const InputForm = () => {
       )}
       <CustomButton
         onPress={startGameHandler}
-        buttonTitle="Start"
+        buttonTitle="START"
         buttonStyles={styles.buttonStyle}
       />
       {!validation && <Text style={styles.warningText}>Invalid Inputs</Text>}

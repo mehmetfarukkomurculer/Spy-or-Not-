@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.secondaryAccent100,
     fontSize: 16,
+    fontFamily: 'Tektur'
   },
   pressed: {
     opacity: 0.75,

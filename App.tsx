@@ -7,13 +7,30 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import GameScreen from "./screens/GameScreen";
 import { RootStackParamList } from "./navigation/RootStackParamList";
-
-
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  
+  const [fontsLoaded] = useFonts({
+    Tektur: require("./assets/fonts/Tektur.ttf"),
+  });
+
+  useEffect(() => {
+    const prepare = async () => {
+      await SplashScreen.preventAutoHideAsync();
+    };
+    prepare();
+  }, []);
+
+  if (fontsLoaded) {
+    SplashScreen.hideAsync();
+  } else {
+    return undefined;
+  }
+
   return (
     <Provider store={store}>
       <StatusBar style="dark" />
@@ -37,9 +54,13 @@ export default function App() {
               gestureEnabled: false,
               headerStyle: {
                 backgroundColor: Colors.secondaryAccent600,
+                
               },
               headerBackVisible: false,
               title: "SELECT A CARD",
+              headerTitleStyle: {
+                fontFamily: 'Tektur'
+              }
             }}
           />
         </Stack.Navigator>

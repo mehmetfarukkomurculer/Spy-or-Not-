@@ -32,8 +32,9 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: Colors.secondaryAccent100,
+    color: Colors.button,
     marginBottom: 4,
+    fontFamily: 'Tektur',
   },
   input: {
     backgroundColor: Colors.secondaryAccent100,
