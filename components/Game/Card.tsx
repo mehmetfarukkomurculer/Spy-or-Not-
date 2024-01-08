@@ -17,7 +17,7 @@ interface CardProps {
   role: string;
 }
 
-const Card: React.FC<CardProps> = ({ text, role }) => {
+const Card: React.FC<CardProps> = ({ text, role}) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [flipsCount, setFlipsCount] = useState(0);
   const flipAnimation = useRef(new Animated.Value(0)).current;
