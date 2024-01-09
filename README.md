@@ -2,7 +2,7 @@
 
 ## Overview
 
-Who's Spy? is a multiplayer game where players try to identify spies based on given words.
+Spy or Not? is a multiplayer game where players try to identify spies based on given words.
 
 ### Key Features
 
