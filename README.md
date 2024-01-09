@@ -61,6 +61,10 @@ If the majority correctly identifies the spies, operatives win. Otherwise, the s
 ## GamePlay and Screenshots
 https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/21324571-0761-4901-a2d1-7389fc4c795c
 
+![home](https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/0bbce043-1613-4eb0-b2c0-fb1345e5f99f)
+![cards](https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/8ad38414-6d5e-4509-96f0-a42f89e87fde)
+![word](https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/58bc9471-1135-4a0a-8c26-459182b03101)
+![spy](https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/c10208f8-173b-4bdc-b2d2-bf44cc2b8ccc)
 
 
 
