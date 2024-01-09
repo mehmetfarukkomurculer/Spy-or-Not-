@@ -9,11 +9,13 @@ import GameScreen from "./screens/main/GameScreen";
 import { RootStackParamList } from "./navigation/RootStackParamList";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FirstOnboardingScreen from "./screens/onboarding/FirstOnboardingScreen";
 import SecondOnboardingScreen from "./screens/onboarding/SecondOnboardingScreen";
 import ThirdOnboardingScreen from "./screens/onboarding/ThirdOnboardingScreen";
 import LanguageSelectScreen from "./screens/onboarding/LanguageSelectScreen";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ActivityIndicator, View } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,6 +23,23 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Tektur: require("./assets/fonts/Tektur.ttf"),
   });
+
+  const [viewedOnboarding, setViewedOnboarding] = useState(false);
+
+  useEffect(() => {
+    checkOnboarding();
+  }, []);
+
+  const checkOnboarding = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@viewedOnboarding");
+      if (value !== null) {
+        setViewedOnboarding(true);
+      }
+    } catch (error) {
+      console.log("Error @checkOnboarding: ", error);
+    }
+  };
 
   useEffect(() => {
     const prepare = async () => {
@@ -46,44 +65,69 @@ export default function App() {
             },
           }}
         >
-          <Stack.Screen
-            name="LangSelect"
-            component={LanguageSelectScreen}
-            options={{ headerShown: false, gestureEnabled: false }}
-          />
-          <Stack.Screen
-            name="FirstOnb"
-            component={FirstOnboardingScreen}
-            options={{ headerShown: false, gestureEnabled: false }}
-          />
-          <Stack.Screen
-            name="SecondOnb"
-            component={SecondOnboardingScreen}
-            options={{ headerShown: false, gestureEnabled: false }}
-          />
-          <Stack.Screen
-            name="ThirdOnb"
-            component={ThirdOnboardingScreen}
-            options={{ headerShown: false, gestureEnabled: false }}
-          />
-          <Stack.Screen
-            name="Start"
-            component={StartScreen}
-            options={{ headerShown: false, gestureEnabled: false  }}
-          />
-          <Stack.Screen
-            name="Game"
-            component={GameScreen}
-            options={{
-              gestureEnabled: false,
-              headerStyle: {
-                backgroundColor: Colors.secondaryAccent600,
-              },
-              headerBackVisible: false,
-              headerShown: true,
-              title:""
-            }}
-          />
+          {viewedOnboarding ? (
+            <>
+              <Stack.Screen
+                name="Start"
+                component={StartScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="Game"
+                component={GameScreen}
+                options={{
+                  gestureEnabled: false,
+                  headerStyle: {
+                    backgroundColor: Colors.secondaryAccent600,
+                  },
+                  headerBackVisible: false,
+                  headerShown: true,
+                  title: "",
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="LangSelect"
+                component={LanguageSelectScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="FirstOnb"
+                component={FirstOnboardingScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="SecondOnb"
+                component={SecondOnboardingScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="ThirdOnb"
+                component={ThirdOnboardingScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="Start"
+                component={StartScreen}
+                options={{ headerShown: false, gestureEnabled: false }}
+              />
+              <Stack.Screen
+                name="Game"
+                component={GameScreen}
+                options={{
+                  gestureEnabled: false,
+                  headerStyle: {
+                    backgroundColor: Colors.secondaryAccent600,
+                  },
+                  headerBackVisible: false,
+                  headerShown: true,
+                  title: "",
+                }}
+              />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

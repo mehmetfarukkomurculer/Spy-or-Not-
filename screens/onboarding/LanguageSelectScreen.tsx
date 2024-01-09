@@ -18,7 +18,7 @@ const LanguageSelectScreen = () => {
           resizeMode="contain"
         />
         <View>
-          <Text style={styles.titleText}>WELCOME</Text>
+          <Text style={styles.titleText}>WHO'S SPY?</Text>
           <Text style={styles.descriptionText}>Choose a Language</Text>
         </View>
       </View>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     fontFamily: "Tektur",
     fontSize: 36,
     padding: 8,
+    color: Colors.button400,
   },
   descriptionText: {
     textAlign: "center",
