@@ -58,7 +58,8 @@ Accusations are made, and players vote on who they believe are the spies.
 
 If the majority correctly identifies the spies, operatives win. Otherwise, the spies triumph.
 
-## Screenshots
+## GamePlay and Screenshots
+https://github.com/mehmetfarukkomurculer/Spy-or-Not-/assets/155771271/21324571-0761-4901-a2d1-7389fc4c795c
 
 
 
