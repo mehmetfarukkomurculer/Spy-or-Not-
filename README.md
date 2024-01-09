@@ -18,7 +18,7 @@ Who's Spy? is a multiplayer game where players try to identify spies based on gi
 
 ## How to Play
 
-Who's Spy? is a thrilling and strategic party game where players take on the roles of agents attempting to identify the spies among them through clever questioning and deduction.
+Spy or Not? is a thrilling and strategic party game where players take on the roles of agents attempting to identify the spies among them through clever questioning and deduction.
 
 ### Setup
 
